@@ -11,34 +11,33 @@ namespace InventoryManagementSystem.Domain.Main
 {
     internal class Utilities
     {
-        private static List<Product> ProductInventory = new();
         private static Inventory inventory = new Inventory();
 
         private static void AddNewProduct()
         {
             Console.Write("Enter product name: ");
             string name = Console.ReadLine();
+
             Console.Write("Enter product price: ");
             double itemPrice = double.Parse(Console.ReadLine());
+
             Console.Write("Enter currency (Dollar, Euro, Pound): ");
             Currency currency = (Currency)Enum.Parse(typeof(Currency), Console.ReadLine(), true);
+
             Console.Write("Enter product quantity: ");
             int quantity = int.Parse(Console.ReadLine());
+
             inventory.AddProduct(name, new Price { ItemPrice = itemPrice, Currency = currency }, quantity);
         }
         internal static void InitializeStock()
         {
-            Product p1 = new Product("Sugar", new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100);
-            Product p2 = new Product("Cake decorations", new Price() { ItemPrice = 8, Currency = Currency.Euro }, 20);
-            Product p3 = new Product("Strawberry", new Price() { ItemPrice = 3, Currency = Currency.Euro }, 10);
-            ProductInventory.Add(p1);
-            ProductInventory.Add(p2);
-            ProductInventory.Add(p3);
+            inventory.AddProduct("Sugar", new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100);
+            inventory.AddProduct("Cake decorations", new Price() { ItemPrice = 8, Currency = Currency.Euro }, 20);
+            inventory.AddProduct("Strawberry", new Price() { ItemPrice = 3, Currency = Currency.Euro }, 10);
         }
 
         internal static void ShowMainMenu()
         {
-
 
             while (true)
             {
@@ -66,6 +65,9 @@ namespace InventoryManagementSystem.Domain.Main
                         break;
 
                     case "2":
+                        inventory.ViewProducts();
+                        Console.WriteLine("Press enter key to Back. \r\n");
+                        Console.ReadKey();
                         break;
 
                     case "3":

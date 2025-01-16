@@ -15,5 +15,21 @@ namespace InventoryManagementSystem.Domain.Inventory_Class
             products.Add(new Product(name, price, quantity));
             Console.WriteLine("Product added successfully!");
         }
+
+        public void ViewProducts()
+        {
+            if (products.Count == 0)
+            {
+                Console.WriteLine("No products in the inventory.");
+                return;
+            }
+
+            Console.WriteLine("\nList of Products:\n********************************");
+            foreach (var product in products)
+            {
+                Console.WriteLine($"Name: {product.Name}\nPrice: {product.Price:C}\nQuantity: {product.Quantity}" +
+                    $"\n********************************");
+            }
+        }
     }
 }
