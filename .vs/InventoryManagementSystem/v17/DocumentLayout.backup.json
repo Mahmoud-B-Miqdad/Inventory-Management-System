@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "Domain\\Inventory_Class\\Inventory.cs",
               "ToolTip": "C:\\Users\\Mahmoud-B-Meqdad\\source\\repos\\InventoryManagementSystem\\Domain\\Inventory_Class\\Inventory.cs",
               "RelativeToolTip": "Domain\\Inventory_Class\\Inventory.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAAAFcAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAUwHEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-16T07:50:39.083Z",
               "EditorCaption": ""
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "Domain\\Main\\Utilities.cs",
               "ToolTip": "C:\\Users\\Mahmoud-B-Meqdad\\source\\repos\\InventoryManagementSystem\\Domain\\Main\\Utilities.cs",
               "RelativeToolTip": "Domain\\Main\\Utilities.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAAAF0AAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAiwGMAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-16T06:41:17.737Z",
               "EditorCaption": ""
@@ -60,8 +60,7 @@
               "RelativeToolTip": "Domain\\Main\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T06:37:48.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T06:37:48.512Z"
             }
           ]
         }

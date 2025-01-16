@@ -95,6 +95,9 @@ namespace InventoryManagementSystem.Domain.Main
                         break;
 
                     case "5":
+                        Console.Write("Enter the name of the product to search: ");
+                        string searchName = Console.ReadLine();
+                        inventory.SearchProduct(searchName);
                         break;
 
                     case "6":

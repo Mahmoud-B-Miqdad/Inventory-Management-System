@@ -94,5 +94,21 @@ namespace InventoryManagementSystem.Domain.Inventory_Class
             Console.WriteLine("Press enter key to Back. \r\n");
             Console.ReadKey();
         }
+
+        public void SearchProduct(string name)
+        {
+            var product = products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (product == null)
+            {
+                Console.WriteLine("Product not found!");
+                Console.WriteLine("Press enter key to Back. \r\n");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine($"\n********************************\nName: {product.Name}\nPrice: {product.Price:C}\nQuantity: {product.Quantity}");
+            Console.WriteLine("Press enter key to Back. \r\n");
+            Console.ReadKey();
+        }
     }
 }
