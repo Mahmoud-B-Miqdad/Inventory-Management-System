@@ -17,17 +17,32 @@ namespace InventoryManagementSystem.Domain.Main
         {
             Console.Write("Enter product name: ");
             string name = Console.ReadLine();
-
             Console.Write("Enter product price: ");
-            double itemPrice = double.Parse(Console.ReadLine());
+            if (!double.TryParse(Console.ReadLine(), out double itemPrice))
+            {
+                Console.WriteLine("Invalid price. Product addition canceled.");
+                return;
+            }
 
-            Console.Write("Enter currency (Dollar, Euro, Pound): ");
-            Currency currency = (Currency)Enum.Parse(typeof(Currency), Console.ReadLine(), true);
-
-            Console.Write("Enter product quantity: ");
-            int quantity = int.Parse(Console.ReadLine());
-
-            inventory.AddProduct(name, new Price { ItemPrice = itemPrice, Currency = currency }, quantity);
+            while (true)
+            {
+                Console.Write("Enter currency (Dollar, Euro, Pound): ");
+                if (Enum.TryParse(Console.ReadLine(), true, out Currency currency))
+                {
+                    Console.Write("Enter product quantity: ");
+                    if (!int.TryParse(Console.ReadLine(), out int quantity))
+                    {
+                        Console.WriteLine("Invalid quantity. Product addition canceled.");
+                        return;
+                    }
+                    inventory.AddProduct(name, new Price { ItemPrice = itemPrice, Currency = currency }, quantity);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid currency. Please enter one of the following: Dollar, Euro, Pound.");
+                }
+            }
         }
         internal static void InitializeStock()
         {
@@ -60,17 +75,17 @@ namespace InventoryManagementSystem.Domain.Main
                 {
                     case "1":
                         AddNewProduct();
-                        Console.WriteLine("Added successfully.\r\nPress enter key to Back.");
                         Console.ReadKey();
                         break;
 
                     case "2":
                         inventory.ViewProducts();
-                        Console.WriteLine("Press enter key to Back. \r\n");
-                        Console.ReadKey();
                         break;
 
                     case "3":
+                        Console.Write("Enter the name of the product to edit: ");
+                        string editName = Console.ReadLine();
+                        inventory.EditProduct(editName);
                         break;
 
                     case "4":
