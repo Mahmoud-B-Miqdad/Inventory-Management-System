@@ -89,6 +89,9 @@ namespace InventoryManagementSystem.Domain.Main
                         break;
 
                     case "4":
+                        Console.Write("Enter the name of the product to delete: ");
+                        string deleteName = Console.ReadLine();
+                        inventory.DeleteProduct(deleteName);
                         break;
 
                     case "5":

@@ -78,5 +78,21 @@ namespace InventoryManagementSystem.Domain.Inventory_Class
         }
 
 
+        public void DeleteProduct(string name)
+        {
+            var product = products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (product == null)
+            {
+                Console.WriteLine("Product not found!");
+                Console.WriteLine("Press enter key to Back. \r\n");
+                Console.ReadKey();
+                return;
+            }
+
+            products.Remove(product);
+            Console.WriteLine("Product deleted successfully!");
+            Console.WriteLine("Press enter key to Back. \r\n");
+            Console.ReadKey();
+        }
     }
 }
