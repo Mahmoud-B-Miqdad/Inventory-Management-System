@@ -2,8 +2,8 @@
 {
     public enum Currency
     {
-        Dollar,
-        Euro,
-        Pound
+        Dollar = 0,
+        Euro = 1,
+        Pound = 2
     }
 }

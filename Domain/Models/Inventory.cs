@@ -7,24 +7,24 @@ namespace InventoryManagementSystem.Domain.Models
 {
     public class Inventory
     {
-        private List<Product> products = new List<Product>();
+        private List<Product> _products = new List<Product>();
 
         public void AddProduct(string name, Price price, int quantity)
         {
-            products.Add(new Product(name, price, quantity));
+            _products.Add(new Product(name, price, quantity));
             Console.WriteLine("Added successfully.\r\nPress enter key to Back.");
         }
 
         public void ViewProducts()
         {
-            if (products.Count == 0)
+            if (_products.Count == 0)
             {
                 Console.WriteLine("No products in the inventory.");
                 return;
             }
 
             Console.WriteLine("\nList of Products:\n********************************");
-            foreach (var product in products)
+            foreach (var product in _products)
             {
                 Console.WriteLine($"Name: {product.Name}\nPrice: {product.Price:C}\nQuantity: {product.Quantity}" +
                     $"\n********************************");
@@ -35,7 +35,7 @@ namespace InventoryManagementSystem.Domain.Models
 
         public void EditProduct(string name)
         {
-            var product = products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            var product = _products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (product == null)
             {
                 Console.WriteLine("Product not found!");
@@ -79,7 +79,7 @@ namespace InventoryManagementSystem.Domain.Models
 
         public void DeleteProduct(string name)
         {
-            var product = products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            var product = _products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (product == null)
             {
                 Console.WriteLine("Product not found!");
@@ -88,7 +88,7 @@ namespace InventoryManagementSystem.Domain.Models
                 return;
             }
 
-            products.Remove(product);
+            _products.Remove(product);
             Console.WriteLine("Product deleted successfully!");
             Console.WriteLine("Press enter key to Back. \r\n");
             Console.ReadKey();
@@ -96,7 +96,7 @@ namespace InventoryManagementSystem.Domain.Models
 
         public void SearchProduct(string name)
         {
-            var product = products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            var product = _products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (product == null)
             {
                 Console.WriteLine("Product not found!");
