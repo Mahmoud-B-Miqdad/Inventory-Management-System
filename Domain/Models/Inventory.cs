@@ -1,10 +1,9 @@
 ﻿using InventoryManagementSystem.Domain.General;
-using InventoryManagementSystem.Domain.Product_Class;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace InventoryManagementSystem.Domain.Inventory_Class
+namespace InventoryManagementSystem.Domain.Models
 {
     public class Inventory
     {

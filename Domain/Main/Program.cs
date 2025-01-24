@@ -1,7 +1,6 @@
 ﻿using InventoryManagementSystem;
-using InventoryManagementSystem.Domain.Inventory_Class;
+using InventoryManagementSystem.Domain.Models;
 using InventoryManagementSystem.Domain.Main;
-using InventoryManagementSystem.Domain.Product_Class;
 using InventoryManagementSystem.Domain.General;
 
 PrintWelcome();

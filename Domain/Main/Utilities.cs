@@ -1,6 +1,5 @@
 ﻿using InventoryManagementSystem.Domain.General;
-using InventoryManagementSystem.Domain.Inventory_Class;
-using InventoryManagementSystem.Domain.Product_Class;
+using InventoryManagementSystem.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

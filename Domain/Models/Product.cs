@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace InventoryManagementSystem.Domain.Product_Class
+namespace InventoryManagementSystem.Domain.Models
 {
     public class Product
     {
