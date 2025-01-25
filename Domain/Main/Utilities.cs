@@ -34,7 +34,20 @@ namespace InventoryManagementSystem.Domain.Main
 
         private static void ViewProducts()
         {
-            inventory.ViewProducts();
+            if (inventory.ViewProducts() != null)
+            {
+                Console.WriteLine("\nList of Products:\n");
+                List<Product> Products = inventory.ViewProducts();
+
+                foreach (var product in Products)
+                {
+                    inventory.PrintProduct(product);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No products in the inventory.");
+            }
         }
 
         private static void EditProduct()

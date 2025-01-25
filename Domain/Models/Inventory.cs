@@ -26,19 +26,14 @@ namespace InventoryManagementSystem.Domain.Models
             _products.Add(new Product(name, price, quantity));
         }
 
-        public void ViewProducts()
+        public List<Product> ViewProducts()
         {
             if (_products.Count == 0)
             {
-                Console.WriteLine("No products in the inventory.");
-                return;
+                return null;
             }
-
-            Console.WriteLine("\nList of Products:\n");
-            foreach (var product in _products)
-            {
-                PrintProduct(product);
-            }
+            
+            return _products;
         }
 
         public void EditProduct(string name, string newName, Price newPrice, int newQuantity)
