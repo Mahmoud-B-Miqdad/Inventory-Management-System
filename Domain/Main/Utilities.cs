@@ -1,5 +1,6 @@
 ﻿using InventoryManagementSystem.Domain.General;
 using InventoryManagementSystem.Domain.Models;
+using InventoryManagementSystem.Domain.Services;
 using System;
 
 namespace InventoryManagementSystem.Domain.Main

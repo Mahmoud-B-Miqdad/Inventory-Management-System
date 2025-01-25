@@ -1,9 +1,10 @@
 ﻿using InventoryManagementSystem.Domain.General;
+using InventoryManagementSystem.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace InventoryManagementSystem.Domain.Models
+namespace InventoryManagementSystem.Domain.Services
 {
     public class Inventory
     {
@@ -32,7 +33,7 @@ namespace InventoryManagementSystem.Domain.Models
             {
                 return null;
             }
-            
+
             return _products;
         }
 
@@ -41,7 +42,7 @@ namespace InventoryManagementSystem.Domain.Models
             var product = _products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (product == null)
             {
-                return; 
+                return;
             }
 
             if (!string.IsNullOrEmpty(newName)) product.Name = newName;
