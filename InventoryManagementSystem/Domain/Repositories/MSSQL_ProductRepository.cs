@@ -2,14 +2,15 @@
 using System.Configuration;
 using InventoryManagementSystem.Domain.Models;
 using InventoryManagementSystem.Domain.General;
+using InventoryManagementSystem.Domain.Repositories;
 
 namespace InventoryManagementSystem.DataAccess
 {
-    public class ProductRepository
+    public class MSSQL_ProductRepository : IProductRepository
     {
         private readonly string _connectionString;
 
-        public ProductRepository()
+        public MSSQL_ProductRepository()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["InventoryDBConnectionString"].ConnectionString;
         }
