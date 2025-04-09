@@ -1,15 +1,14 @@
 ﻿using InventoryManagementSystem.DataAccess;
 using InventoryManagementSystem.Domain.General;
 using InventoryManagementSystem.Domain.Models;
+using InventoryManagementSystem.Domain.Repositories;
 using InventoryManagementSystem.Domain.Services;
-using System;
 
 namespace InventoryManagementSystem.Domain.Main
 {
     internal class Utilities
     {
-        private static readonly MSSQL_ProductRepository _repository = new MSSQL_ProductRepository();
-        private static Inventory inventory = new Inventory(_repository);
+        private static Inventory inventory;
 
         private static void Pause()
         {
@@ -113,11 +112,23 @@ namespace InventoryManagementSystem.Domain.Main
             }
         }
 
-        internal static void InitializeStock()
+        internal static void InitializeStock(string databaseType)
         {
-            inventory.AddProduct("Sugar", new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100);
-            inventory.AddProduct("Cake decorations", new Price() { ItemPrice = 8, Currency = Currency.Euro }, 20);
-            inventory.AddProduct("Strawberry", new Price() { ItemPrice = 3, Currency = Currency.Euro }, 10);
+            IProductRepository productRepository;
+
+            if (databaseType == "MongoDB")
+            {
+                productRepository = new MongoDbProductRepository(); 
+            }
+            else
+            {
+                productRepository = new MSSQL_ProductRepository();  
+            }
+
+            inventory = new Inventory(productRepository);
+            //inventory.AddProduct("Sugar", new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100);
+            //inventory.AddProduct("Cake decorations", new Price() { ItemPrice = 8, Currency = Currency.Euro }, 20);
+            //inventory.AddProduct("Strawberry", new Price() { ItemPrice = 3, Currency = Currency.Euro }, 10);
         }
 
         internal static void ShowMainMenu()
