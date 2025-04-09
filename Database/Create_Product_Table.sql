@@ -1,0 +1,14 @@
+CREATE DATABASE InventoryDB;
+GO
+
+USE InventoryDB;
+GO
+
+CREATE TABLE Products (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    ItemPrice DECIMAL(18,2) NOT NULL,
+    Currency INT NOT NULL,
+    Quantity INT NOT NULL
+);
+GO
