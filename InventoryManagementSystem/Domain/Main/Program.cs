@@ -5,7 +5,7 @@ using InventoryManagementSystem.Domain.General;
 
 PrintWelcome();
 
-Utilities.InitializeStock();
+//Utilities.InitializeStock();
 
 Utilities.ShowMainMenu();
 

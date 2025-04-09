@@ -59,7 +59,7 @@ namespace InventoryManagementSystem.DataAccess
             return products;
         }
 
-        public void UpdateProduct(Product product)
+        public void UpdateProduct(Product product, string OriginalName)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -72,7 +72,7 @@ namespace InventoryManagementSystem.DataAccess
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@OriginalName", product.Name);
+                    command.Parameters.AddWithValue("@OriginalName", OriginalName);
                     command.Parameters.AddWithValue("@Name", product.Name);
                     command.Parameters.AddWithValue("@ItemPrice", product.Price.ItemPrice);
                     command.Parameters.AddWithValue("@Currency", (int)product.Price.Currency);
