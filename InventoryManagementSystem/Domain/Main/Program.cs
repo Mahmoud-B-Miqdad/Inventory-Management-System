@@ -5,10 +5,8 @@ using InventoryManagementSystem.Domain.General;
 
 PrintWelcome();
 
-// اطلب من المستخدم اختيار نوع قاعدة البيانات
 string databaseType = ChooseDatabaseType();
 
-// مرر نوع القاعدة إلى Utilities
 Utilities.InitializeStock(databaseType);
 
 Utilities.ShowMainMenu();
