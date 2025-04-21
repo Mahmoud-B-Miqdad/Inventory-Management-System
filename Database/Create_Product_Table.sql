@@ -5,7 +5,8 @@ USE InventoryDB;
 GO
 
 CREATE TABLE Products (
-    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Id INT IDENTITY(1,1),
+	CONSTRAINT PK_Products_Id PRIMARY KEY (Id),
     Name NVARCHAR(100) NOT NULL,
     ItemPrice DECIMAL(18,2) NOT NULL,
     Currency INT NOT NULL,
