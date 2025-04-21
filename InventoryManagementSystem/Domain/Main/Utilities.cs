@@ -115,8 +115,7 @@ namespace InventoryManagementSystem.Domain.Main
 
         internal static void InitializeStock(string databaseType)
         {
-            ProductRepositoryFactory factory = new ProductRepositoryFactory();
-            IProductRepository productRepository = factory.CreateProductRepository(databaseType);
+            var productRepository = ProductRepositoryFactory.CreateProductRepository("MongoDB");
 
             inventory = new Inventory(productRepository);
             //inventory.AddProduct("Sugar", new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100);

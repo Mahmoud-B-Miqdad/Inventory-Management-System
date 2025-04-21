@@ -1,9 +1,9 @@
 ﻿using InventoryManagementSystem.DataAccess;
 using InventoryManagementSystem.Domain.Repositories;
 
-public class ProductRepositoryFactory
+public static class ProductRepositoryFactory
 {
-    public IProductRepository CreateProductRepository(string databaseType)
+    public static IProductRepository CreateProductRepository(string databaseType)
     {
         return databaseType switch
         {
