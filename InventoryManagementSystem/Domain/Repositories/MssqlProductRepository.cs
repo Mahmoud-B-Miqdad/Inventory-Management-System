@@ -6,11 +6,11 @@ using InventoryManagementSystem.Domain.Repositories;
 
 namespace InventoryManagementSystem.DataAccess
 {
-    public class MSSQL_ProductRepository : IProductRepository
+    public class MssqlProductRepository : IProductRepository
     {
         private readonly string _connectionString;
 
-        public MSSQL_ProductRepository()
+        public MssqlProductRepository()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["InventoryDBConnectionString"].ConnectionString;
         }

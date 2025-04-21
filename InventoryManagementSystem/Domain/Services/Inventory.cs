@@ -7,9 +7,9 @@ namespace InventoryManagementSystem.Domain.Services
     public class Inventory
     {
         private List<Product> _products = new List<Product>();
-        private readonly MSSQL_ProductRepository _repository;
+        private readonly MssqlProductRepository _repository;
 
-        public Inventory(MSSQL_ProductRepository repository)
+        public Inventory(MssqlProductRepository repository)
         {
             _repository = repository;
             LoadProducts();
