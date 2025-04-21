@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using InventoryManagementSystem.Domain.Models;
 using InventoryManagementSystem.Domain.Repositories;
+using System.Configuration;
 
 namespace InventoryManagementSystem.DataAccess
 {
@@ -10,7 +11,7 @@ namespace InventoryManagementSystem.DataAccess
 
         public MongoDbProductRepository()
         {
-            var connectionString = "mongodb+srv://mahmoudbmiqdad:Mahmoud2003@cluster0.t1n1ssg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+            var connectionString = ConfigurationManager.ConnectionStrings["MongoDBConnectionString"]?.ConnectionString;
             var client = new MongoClient(connectionString);  
             var database = client.GetDatabase("InventoryDB"); 
             _productCollection = database.GetCollection<Product>("products"); 
