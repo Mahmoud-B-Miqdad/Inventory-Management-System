@@ -6,11 +6,11 @@ using InventoryManagementSystem.Domain.Repositories;
 
 namespace InventoryManagementSystem.DataAccess
 {
-    public class MSSQL_ProductRepository : IProductRepository
+    public class MssqlProductRepository : IProductRepository
     {
         private readonly string _connectionString;
 
-        public MSSQL_ProductRepository()
+        public MssqlProductRepository()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["InventoryDBConnectionString"].ConnectionString;
         }
@@ -45,8 +45,8 @@ namespace InventoryManagementSystem.DataAccess
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
+                        while (reader.Read())
                     {
                         string name = reader["Name"].ToString();
                         double itemPrice = Convert.ToDouble(reader["ItemPrice"]);

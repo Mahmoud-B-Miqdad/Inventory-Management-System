@@ -1,5 +1,4 @@
-﻿using InventoryManagementSystem.DataAccess;
-using InventoryManagementSystem.Domain.General;
+﻿using InventoryManagementSystem.Domain.General;
 using InventoryManagementSystem.Domain.Models;
 using InventoryManagementSystem.Domain.Repositories;
 
