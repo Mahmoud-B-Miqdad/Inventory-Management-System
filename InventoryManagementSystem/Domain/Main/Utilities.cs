@@ -145,27 +145,62 @@ namespace InventoryManagementSystem.Domain.Main
                 switch (choice)
                 {
                     case "1":
-                        AddNewProduct();
+                        try
+                        {
+                            AddNewProduct();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error while adding product: {ex.Message}");
+                        }
                         Pause();
                         break;
 
                     case "2":
-                        ViewProducts();
+                        try
+                        {
+                            ViewProducts();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error while viewing products: {ex.Message}");
+                        }
                         Pause();
                         break;
 
                     case "3":
-                        EditProduct();
+                        try
+                        {
+                            EditProduct();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error while editing product: {ex.Message}");
+                        }
                         Pause();
                         break;
 
                     case "4":
-                        DeleteProduct();
+                        try
+                        {
+                            DeleteProduct();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error while deleting product: {ex.Message}");
+                        }
                         Pause();
                         break;
 
                     case "5":
-                        SearchProduct();
+                        try
+                        {
+                            SearchProduct();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error while searching for product: {ex.Message}");
+                        }
                         Pause();
                         break;
 

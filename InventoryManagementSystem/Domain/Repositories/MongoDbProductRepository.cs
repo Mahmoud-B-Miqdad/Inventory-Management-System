@@ -25,7 +25,7 @@ namespace InventoryManagementSystem.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while adding the product: {ex.Message}");
+                throw;
             }
         }
 
@@ -37,8 +37,7 @@ namespace InventoryManagementSystem.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while retrieving products: {ex.Message}");
-                return new List<Product>();
+                throw;
             }
         }
 
@@ -57,7 +56,7 @@ namespace InventoryManagementSystem.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while updating the product: {ex.Message}");
+                throw;
             }
         }
 
@@ -70,7 +69,7 @@ namespace InventoryManagementSystem.DataAccess
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while deleting the product: {ex.Message}");
+                throw;
             }
         }
     }
