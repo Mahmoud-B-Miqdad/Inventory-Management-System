@@ -45,8 +45,8 @@ namespace InventoryManagementSystem.DataAccess
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
+                        while (reader.Read())
                     {
                         string name = reader["Name"].ToString();
                         double itemPrice = Convert.ToDouble(reader["ItemPrice"]);

@@ -8,7 +8,7 @@ namespace InventoryManagementSystem.Domain.Main
 {
     internal class Utilities
     {
-        private static readonly MSSQL_ProductRepository _repository = new MSSQL_ProductRepository();
+        private static readonly MssqlProductRepository _repository = new MssqlProductRepository();
         private static Inventory inventory = new Inventory(_repository);
 
         private static void Pause()
