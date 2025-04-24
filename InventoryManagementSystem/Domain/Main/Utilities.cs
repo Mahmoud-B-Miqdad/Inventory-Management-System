@@ -1,4 +1,5 @@
-﻿using InventoryManagementSystem.Domain.General;
+﻿using InventoryManagementSystem.DataAccess;
+using InventoryManagementSystem.Domain.General;
 using InventoryManagementSystem.Domain.Models;
 using InventoryManagementSystem.Domain.Services;
 using System;
@@ -7,7 +8,8 @@ namespace InventoryManagementSystem.Domain.Main
 {
     internal class Utilities
     {
-        private static Inventory inventory = new Inventory();
+        private static readonly MssqlProductRepository _repository = new MssqlProductRepository();
+        private static Inventory inventory = new Inventory(_repository);
 
         private static void Pause()
         {

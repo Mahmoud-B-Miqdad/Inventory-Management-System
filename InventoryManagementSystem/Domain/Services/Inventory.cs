@@ -1,15 +1,24 @@
-﻿using InventoryManagementSystem.Domain.General;
+﻿using InventoryManagementSystem.DataAccess;
+using InventoryManagementSystem.Domain.General;
 using InventoryManagementSystem.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace InventoryManagementSystem.Domain.Services
 {
     public class Inventory
     {
         private List<Product> _products = new List<Product>();
+        private readonly MssqlProductRepository _repository;
 
+        public Inventory(MssqlProductRepository repository)
+        {
+            _repository = repository;
+            LoadProducts();
+        }
+
+        private void LoadProducts()
+        {
+            _products = _repository.GetProducts();
+        }
 
         public void PrintProduct(Product product)
         {
@@ -24,7 +33,9 @@ namespace InventoryManagementSystem.Domain.Services
 
         public void AddProduct(string name, Price price, int quantity)
         {
-            _products.Add(new Product(name, price, quantity));
+            Product product = new Product(name, price, quantity);
+            _repository.AddProduct(product);
+            LoadProducts();
         }
 
         public List<Product> ViewProducts()
@@ -33,7 +44,6 @@ namespace InventoryManagementSystem.Domain.Services
             {
                 return null;
             }
-
             return _products;
         }
 
@@ -48,6 +58,8 @@ namespace InventoryManagementSystem.Domain.Services
             if (!string.IsNullOrEmpty(newName)) product.Name = newName;
             product.Price = newPrice;
             product.Quantity = newQuantity;
+            _repository.UpdateProduct(product,name);
+            LoadProducts();
         }
 
         public void DeleteProduct(string name)
@@ -55,7 +67,8 @@ namespace InventoryManagementSystem.Domain.Services
             var product = _products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (product != null)
             {
-                _products.Remove(product);
+                _repository.DeleteProduct(name);
+                LoadProducts();
             }
         }
 
