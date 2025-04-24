@@ -5,18 +5,18 @@ using InventoryManagementSystem.Domain.General;
 
 PrintWelcome();
 
-//Utilities.InitializeStock();
+string databaseType = ChooseDatabaseType();
+
+Utilities.InitializeStock(databaseType);
 
 Utilities.ShowMainMenu();
 
 Console.WriteLine("Application shutting down...");
-
 Console.ReadLine();
 
 #region Layout
 void PrintWelcome()
 {
-
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine(@"     
 ()()()()()()  _____                    ___                       ________                                                 ___    ()()()()()()
@@ -33,12 +33,31 @@ void PrintWelcome()
 ");
 
     Console.ResetColor();
-
     Console.WriteLine("Press enter key to start logging in!");
-
-    //accepting enter here
     Console.ReadLine();
-
     Console.Clear();
 }
 #endregion
+
+string ChooseDatabaseType()
+{
+    while (true)
+    {
+        Console.WriteLine("Please choose your database:");
+        Console.WriteLine("1 - MongoDB");
+        Console.WriteLine("2 - MSSQL");
+        Console.Write("Enter your choice (1 or 2): ");
+        string choice = Console.ReadLine()?.Trim();
+
+        switch (choice)
+        {
+            case "1":
+                return "MongoDB";
+            case "2":
+                return "MSSQL";
+            default:
+                Console.WriteLine("Invalid input. Please choose 1 or 2.\n");
+                break;
+        }
+    }
+}

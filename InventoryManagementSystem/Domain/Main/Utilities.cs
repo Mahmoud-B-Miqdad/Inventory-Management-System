@@ -1,8 +1,8 @@
 ﻿using InventoryManagementSystem.DataAccess;
 using InventoryManagementSystem.Domain.General;
 using InventoryManagementSystem.Domain.Models;
+using InventoryManagementSystem.Domain.Repositories;
 using InventoryManagementSystem.Domain.Services;
-using System;
 
 namespace InventoryManagementSystem.Domain.Main
 {
@@ -113,11 +113,14 @@ namespace InventoryManagementSystem.Domain.Main
             }
         }
 
-        internal static void InitializeStock()
+        internal static void InitializeStock(string databaseType)
         {
-            inventory.AddProduct("Sugar", new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100);
-            inventory.AddProduct("Cake decorations", new Price() { ItemPrice = 8, Currency = Currency.Euro }, 20);
-            inventory.AddProduct("Strawberry", new Price() { ItemPrice = 3, Currency = Currency.Euro }, 10);
+            var productRepository = ProductRepositoryFactory.CreateProductRepository("MongoDB");
+
+            inventory = new Inventory(productRepository);
+            //inventory.AddProduct("Sugar", new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100);
+            //inventory.AddProduct("Cake decorations", new Price() { ItemPrice = 8, Currency = Currency.Euro }, 20);
+            //inventory.AddProduct("Strawberry", new Price() { ItemPrice = 3, Currency = Currency.Euro }, 10);
         }
 
         internal static void ShowMainMenu()
@@ -141,27 +144,62 @@ namespace InventoryManagementSystem.Domain.Main
                 switch (choice)
                 {
                     case "1":
-                        AddNewProduct();
+                        try
+                        {
+                            AddNewProduct();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error while adding product: {ex.Message}");
+                        }
                         Pause();
                         break;
 
                     case "2":
-                        ViewProducts();
+                        try
+                        {
+                            ViewProducts();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error while viewing products: {ex.Message}");
+                        }
                         Pause();
                         break;
 
                     case "3":
-                        EditProduct();
+                        try
+                        {
+                            EditProduct();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error while editing product: {ex.Message}");
+                        }
                         Pause();
                         break;
 
                     case "4":
-                        DeleteProduct();
+                        try
+                        {
+                            DeleteProduct();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error while deleting product: {ex.Message}");
+                        }
                         Pause();
                         break;
 
                     case "5":
-                        SearchProduct();
+                        try
+                        {
+                            SearchProduct();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error while searching for product: {ex.Message}");
+                        }
                         Pause();
                         break;
 
